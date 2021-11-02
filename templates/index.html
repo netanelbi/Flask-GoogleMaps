@@ -27,14 +27,14 @@ function sleep(ms) {
 }
 
 
-function read_data(id) {
+function read_data(guid,id) {
     if (id in markers) {
     $.ajax({
       url: "/read",
       type: "get",
-      data: {jsdata: id},
+      data: {jsdata: (guid,id)},
       success: function(response) {
-        $("#"+id).html(response);
+        $("#"+guid+'_'+id).html(response);
       },
       error: function(xhr) {
         //Do Something to handle error

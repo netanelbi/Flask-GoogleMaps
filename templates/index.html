@@ -19,24 +19,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script>
+var markers={}
 
 
-$("#search_form_input").keyup(function(){
-    var text = $(this).val();
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-    $.ajax({
-      url: "/suggestions",
-      type: "get",
-      data: {jsdata: text},
-      success: function(response) {
-        $("div#1718").html(response);
-      },
-      error: function(xhr) {
-        //Do Something to handle error
-      }
-    });
-});
+
 function read_data(id) {
+    if (id in markers) {
     $.ajax({
       url: "/read",
       type: "get",
@@ -47,7 +39,12 @@ function read_data(id) {
       error: function(xhr) {
         //Do Something to handle error
       }
-    });
+    });}
+    else {
+        console.log("Hello");
+        sleep(10000).then(() => { markers[id]=true; });        
+        console.log(id + " added to dict")
+    };
 };
 
 $('#maingmap').on('click', '#1718', function() {

@@ -32,7 +32,7 @@ function read_data(guid,id) {
     $.ajax({
       url: "/read",
       type: "get",
-      data: {jsdata: (guid,id)},
+      data: {guid: guid, id: id},
       success: function(response) {
         $("#"+guid+'_'+id).html(response);
       },
@@ -42,8 +42,8 @@ function read_data(guid,id) {
     });}
     else {
         console.log("Hello");
-        sleep(10000).then(() => { markers[id]=true; });        
-        console.log(id + " added to dict")
+        sleep(3000).then(() => { markers[id]=true; console.log(id + " added to dict")});        
+        
     };
 };
 

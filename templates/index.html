@@ -12,9 +12,7 @@
 
 <body>
 
-Search: <input type="text" id="search_form_input2"></input>
 <div id = "maingmap">
-    Search: <input type="text" id="search_form_input"></input>
     {{ gmap.html }}
 </div>
 
@@ -38,28 +36,13 @@ $("#search_form_input").keyup(function(){
       }
     });
 });
-$('#maingmap').on('change', '#1718', function() {
-  // DO STUFF!
-    var text = "hello world"
-    $.ajax({
-      url: "/read",
-      type: "get",
-      data: {jsdata: text},
-      success: function(response) {
-        $("#17181").html(response);
-      },
-      error: function(xhr) {
-        //Do Something to handle error
-      }
-    });
-});
 function read_data(id) {
     $.ajax({
       url: "/read",
       type: "get",
       data: {jsdata: id},
       success: function(response) {
-        $("#1718").html(response);
+        $("#"+id).html(response);
       },
       error: function(xhr) {
         //Do Something to handle error

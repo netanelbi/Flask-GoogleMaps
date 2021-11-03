@@ -46,6 +46,20 @@ function read_data(guid,id) {
         
     };
 };
+function analyze(guid,id) {
+    
+    $.ajax({
+      url: "/analyze",
+      type: "get",
+      data: {guid: guid, id: id},
+      success: function(response) {
+        $("#"+guid+'_'+id).html(response);
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+};
 
 $('#maingmap').on('click', '#1718', function() {
   // DO STUFF!

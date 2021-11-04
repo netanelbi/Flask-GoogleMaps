@@ -19,18 +19,18 @@
 <div id= "datepicker" style= "float:left;">
     <Label>Chose Date and time to show markers</Label>
    
-    </br>
+    <br>
     <Label>Device:</Label>
      <select name="devices" id="devices">
     {% for device in devices %}
         <option value="{{ device }}">{{ device }}</option>
     {% endfor %}
     </select>
-    </br>
+    <br>
     <Label>Start: </Label>
     <input type="datetime-local" id="start"
        name="Start Date" value={{ start }}>
-    </br>
+    <br>
     <Label>End: </Label>
     <input type="datetime-local" id="end"
        name="End Date" value={{ end }} >
@@ -42,13 +42,19 @@
 var markers={}
 
 
-
+devices.value='{{sel_device}}'
 start.min='2021-08-12T08:00';
-start.max = new Date().toISOString().slice(0,16)
+start.max = new Date().toISOString().slice(0,16);
 
 end.min='2021-08-12T08:00';
-end.max = {{ end }};
+end.max = '{{ end }}';
 $("#start").change( function (){
+    window.location = '/?start='+start.value+'&end='+end.value+'&guid='+devices.value;
+});
+$("#end").change( function (){
+    window.location = '/?start='+start.value+'&end='+end.value+'&guid='+devices.value;
+});
+$("#devices").change( function (){
     window.location = '/?start='+start.value+'&end='+end.value+'&guid='+devices.value;
 });
 

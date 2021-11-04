@@ -34,6 +34,8 @@
     <Label>End: </Label>
     <input type="datetime-local" id="end"
        name="End Date" value={{ end }} >
+    <Label>Total Samples: {{total_markers}}</Label>
+    <button id=analyze_all onclick="analyze_all()"> Analyze {{total_markers}} Samples</button>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

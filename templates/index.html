@@ -38,6 +38,8 @@
     <Label>Total Samples: {{total_markers}}</Label>
     <br>
     <button id=analyze_all onclick="analyze_all()"> Analyze {{total_markers}} Samples</button>
+    <br>
+    <div id=results></div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -64,6 +66,21 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function analyze_all() {
+    $.ajax({
+      url: "/analyze_all",
+      type: "get",
+      data: {start: start.value,end: end.value, device: devices.value},
+      success: function(response) {
+        results.html(response);
+      },
+      error: function(xhr) {
+        //Do Something to handle error
+      }
+    });
+    results.innerText='analyzing please wait pationtly';
+
+};
 
 function read_data(guid,id) {
     if (id in markers) {
@@ -99,21 +116,7 @@ function analyze(guid,id) {
     });
 };
 
-$('#maingmap').on('click', '#1718', function() {
-  // DO STUFF!
-    var text = "test this change"
-    $.ajax({
-      url: "/suggestions",
-      type: "get",
-      data: {jsdata: text},
-      success: function(response) {
-        $("#1718").html(response);
-      },
-      error: function(xhr) {
-        //Do Something to handle error
-      }
-    });
-});
+
 
 
 </script>

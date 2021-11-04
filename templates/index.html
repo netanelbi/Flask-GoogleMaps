@@ -34,7 +34,9 @@
     <Label>End: </Label>
     <input type="datetime-local" id="end"
        name="End Date" value={{ end }} >
+    <br>
     <Label>Total Samples: {{total_markers}}</Label>
+    <br>
     <button id=analyze_all onclick="analyze_all()"> Analyze {{total_markers}} Samples</button>
 </div>
 
@@ -46,10 +48,8 @@ var markers={}
 
 devices.value='{{sel_device}}'
 start.min='2021-08-12T08:00';
-start.max = new Date().toISOString().slice(0,16);
 
 end.min='2021-08-12T08:00';
-end.max = '{{ end }}';
 $("#start").change( function (){
     window.location = '/?start='+start.value+'&end='+end.value+'&guid='+devices.value;
 });

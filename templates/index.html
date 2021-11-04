@@ -72,13 +72,13 @@ function analyze_all() {
       type: "get",
       data: {start: start.value,end: end.value, device: devices.value},
       success: function(response) {
-        results.html(response);
+        $("#results").html(response);
       },
       error: function(xhr) {
         //Do Something to handle error
       }
     });
-    results.innerText='analyzing please wait pationtly';
+    results.innerText='analyzing please wait patiently';
 
 };
 

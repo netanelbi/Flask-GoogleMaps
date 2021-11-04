@@ -12,8 +12,28 @@
 
 <body>
 
-<div id = "maingmap">
+<div id = "maingmap" style= "float:left;">
+    
     {{ gmap.html }}
+</div>
+<div id= "datepicker" style= "float:left;">
+    <Label>Chose Date and time to show markers</Label>
+   
+    </br>
+    <Label>Device:</Label>
+     <select name="devices" id="devices">
+    {% for device in devices %}
+        <option value="{{ device }}">{{ device }}</option>
+    {% endfor %}
+    </select>
+    </br>
+    <Label>Start: </Label>
+    <input type="datetime-local" id="start"
+       name="Start Date" value={{ start }}>
+    </br>
+    <Label>End: </Label>
+    <input type="datetime-local" id="end"
+       name="End Date" value={{ end }} >
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -21,6 +41,16 @@
 <script>
 var markers={}
 
+
+
+start.min='2021-08-12T08:00';
+start.max = new Date().toISOString().slice(0,16)
+
+end.min='2021-08-12T08:00';
+end.max = {{ end }};
+$("#start").change( function (){
+    window.location = '/?start='+start.value+'&end='+end.value+'&guid='+devices.value;
+});
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

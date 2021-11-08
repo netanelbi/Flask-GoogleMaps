@@ -72,7 +72,7 @@ function analyze_all() {
       type: "get",
       data: {start: start.value,end: end.value, device: devices.value},
       success: function(response) {
-        $("#results").html(response);
+        $("#results").html(decodeURIComponent((response));
       },
       error: function(xhr) {
         //Do Something to handle error
@@ -89,7 +89,7 @@ function read_data(guid,id) {
       type: "get",
       data: {guid: guid, id: id},
       success: function(response) {
-        $("#"+guid+'_'+id).html(response);
+        $("#"+guid+'_'+id).html(decodeURIComponent((response));
       },
       error: function(xhr) {
         //Do Something to handle error
@@ -108,7 +108,7 @@ function analyze(guid,id) {
       type: "get",
       data: {guid: guid, id: id},
       success: function(response) {
-        $("#"+guid+'_'+id).html(response);
+        $("#"+guid+'_'+id).html(decodeURIComponent((response));
       },
       error: function(xhr) {
         //Do Something to handle error
